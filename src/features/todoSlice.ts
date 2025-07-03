@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-interface Todo {
+interface Task {
   text: string;
   id: string;
   isChecked: boolean;
@@ -12,7 +12,7 @@ interface Todo {
 interface List {
   text: string;
   id: string;
-  todo: Todo[];
+  task: Task[];
 }
 
 interface State {
@@ -34,7 +34,7 @@ export const todoSlice = createSlice({
       state.list.unshift({
         text: action.payload,
         id: newId,
-        todo: [],
+        task: [],
       });
       state.currentItem = newId;
     },
@@ -48,7 +48,7 @@ export const todoSlice = createSlice({
     addTodo: (state, action: PayloadAction<string>) => {
       const current = state.list.find((el) => el.id === state.currentItem);
       if (current) {
-        current.todo.unshift({
+        current.task.unshift({
           text: action.payload,
           id: uuidv4(),
           isChecked: false,
@@ -58,15 +58,15 @@ export const todoSlice = createSlice({
     removeTodo: (state, action: PayloadAction<string>) => {
       const current = state.list.find((el) => el.id === state.currentItem);
       if (current) {
-        current.todo = current.todo.filter((t) => t.id !== action.payload);
+        current.task = current.task.filter((t) => t.id !== action.payload);
       }
     },
     toggleChecked: (state, action: PayloadAction<string>) => {
       const current = state.list.find((el) => el.id === state.currentItem);
       if (current) {
-        const todo = current.todo.find((t) => t.id === action.payload);
-        if (todo) {
-          todo.isChecked = !todo.isChecked;
+        const task = current.task.find((t) => t.id === action.payload);
+        if (task) {
+          task.isChecked = !task.isChecked;
         }
       }
     },
