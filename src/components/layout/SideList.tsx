@@ -35,7 +35,7 @@ export default function SideList({ className }: { className?: string }) {
           buttonText="Add"
           onSubmit={handleAddList}
         />
-        <div className="flex-1 overflow-y-scroll">
+        <div className="custom-scrollbar flex-1 overflow-y-auto">
           <Lists />
         </div>
       </div>

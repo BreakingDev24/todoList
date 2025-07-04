@@ -28,7 +28,7 @@ export default function TasksPanel({ className }: { className?: string }) {
         />
       </div>
 
-      <div className="flex-1 overflow-scroll">
+      <div className="custom-scrollbar flex-1 overflow-y-auto">
         <Tasks />
       </div>
     </section>
