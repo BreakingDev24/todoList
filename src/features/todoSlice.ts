@@ -45,7 +45,7 @@ export const todoSlice = createSlice({
       state.currentItem = action.payload;
     },
 
-    addTodo: (state, action: PayloadAction<string>) => {
+    addTask: (state, action: PayloadAction<string>) => {
       const current = state.list.find((el) => el.id === state.currentItem);
       if (current) {
         current.task.unshift({
@@ -55,7 +55,7 @@ export const todoSlice = createSlice({
         });
       }
     },
-    removeTodo: (state, action: PayloadAction<string>) => {
+    removeTask: (state, action: PayloadAction<string>) => {
       const current = state.list.find((el) => el.id === state.currentItem);
       if (current) {
         current.task = current.task.filter((t) => t.id !== action.payload);
@@ -76,8 +76,8 @@ export const {
   addList,
   removeList,
   setCurrentList,
-  addTodo,
-  removeTodo,
+  addTask,
+  removeTask,
   toggleChecked,
 } = todoSlice.actions;
 export default todoSlice.reducer;
