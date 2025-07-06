@@ -1,48 +1,11 @@
-import { addTodo } from "../../features/todoSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import type { RootState } from "../../store/store";
 import cn from "../../utils/cn";
-import AddItemForm from "../AddItemForm";
-import Tasks from "../Tasks";
+
+import Tasks from "../tasks";
 
 export default function TasksPanel({ className }: { className?: string }) {
-  const list = useAppSelector((state: RootState) => state.todo.list);
-  const currentItem = useAppSelector(
-    (state: RootState) => state.todo.currentItem,
-  );
-  const currentList = list.find((el) => el.id === currentItem);
-  const dispatch = useAppDispatch();
-  const handleAddTask = (text: string) => {
-    dispatch(addTodo(text));
-  };
   return (
-    <section className={cn("flex flex-col gap-5 bg-gray-100 p-3", className)}>
-      {list.length === 0 ? (
-        <div>
-          <p>List not found</p>
-          <p>
-            We can't find the list you're looking for. Select one of your lists
-            from the sidebar or create a new one
-          </p>
-        </div>
-      ) : (
-        <div>
-          <h1 className="text-5xl font-bold">{currentList?.text}</h1>
-          <div>
-            {/* form */}
-            <AddItemForm
-              name="input task"
-              placeholder="add task"
-              buttonText="add"
-              onSubmit={handleAddTask}
-            />
-          </div>
-
-          <div className="custom-scrollbar flex-1 overflow-y-auto">
-            <Tasks />
-          </div>
-        </div>
-      )}
+    <section className={cn("bg-gray-100 p-3", className)}>
+      <Tasks />
     </section>
   );
 }
