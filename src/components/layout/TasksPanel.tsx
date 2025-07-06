@@ -16,21 +16,33 @@ export default function TasksPanel({ className }: { className?: string }) {
     dispatch(addTodo(text));
   };
   return (
-    <section className={cn("flex flex-col gap-2 bg-gray-100 p-3", className)}>
-      <h1>{currentList?.text}</h1>
-      <div>
-        {/* form */}
-        <AddItemForm
-          name="input task"
-          placeholder="add task"
-          buttonText="add"
-          onSubmit={handleAddTask}
-        />
-      </div>
+    <section className={cn("flex flex-col gap-5 bg-gray-100 p-3", className)}>
+      {list.length === 0 ? (
+        <div>
+          <p>List not found</p>
+          <p>
+            We can't find the list you're looking for. Select one of your lists
+            from the sidebar or create a new one
+          </p>
+        </div>
+      ) : (
+        <div>
+          <h1 className="text-5xl font-bold">{currentList?.text}</h1>
+          <div>
+            {/* form */}
+            <AddItemForm
+              name="input task"
+              placeholder="add task"
+              buttonText="add"
+              onSubmit={handleAddTask}
+            />
+          </div>
 
-      <div className="custom-scrollbar flex-1 overflow-y-auto">
-        <Tasks />
-      </div>
+          <div className="custom-scrollbar flex-1 overflow-y-auto">
+            <Tasks />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
