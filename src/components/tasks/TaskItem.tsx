@@ -28,7 +28,7 @@ const taskItem = tv({
   },
 });
 
-export default function TodoItem({
+export default function TaskItem({
   text,
   id,
   isChecked,
@@ -38,10 +38,15 @@ export default function TodoItem({
   const { root, text: textSlot } = taskItem({ isChecked });
   return (
     <li key={id} className={root()}>
-      <input type="checkbox" onChange={onToggle} checked={isChecked} />
+      <input
+        type="checkbox"
+        onChange={onToggle}
+        checked={isChecked}
+        aria-label={`Mark task "${text}" as ${isChecked ? "incomplete" : "complete"}`}
+      />
       <span className={textSlot()}>{text}</span>
       <Button onClick={onRemove}>
-        <Trash />
+        <Trash aria-hidden="true" focusable="false" />
       </Button>
     </li>
   );
