@@ -8,8 +8,12 @@ export default function Header() {
   return (
     <header className="flex items-center justify-between overflow-hidden bg-gray-500 px-2 py-3">
       <Logo />
-      <Button className="md:hidden" onClick={() => dispatch(openList())}>
-        <Menu className="h-10 w-10" />
+      <Button
+        className="md:hidden"
+        onClick={() => dispatch(openList())}
+        aria-label="open sidelist"
+      >
+        <Menu className="h-10 w-10" aria-hidden="true" focusable="false" />
       </Button>
     </header>
   );
