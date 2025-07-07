@@ -27,13 +27,19 @@ export function ListItem({
       <Button
         className="flex-1 truncate text-left text-xl md:text-base"
         onClick={onClick}
+        aria-pressed={isActive}
+        aria-label={`Select list ${title}`}
       >
         {title}
       </Button>
 
       {isActive && (
-        <Button onClick={onDelete} className="shrink-0 text-white">
-          <Trash2 />
+        <Button
+          onClick={onDelete}
+          className="shrink-0 text-white"
+          aria-label={`Delete list ${title}`}
+        >
+          <Trash2 aria-hidden="true" focusable="false" />
         </Button>
       )}
     </li>
