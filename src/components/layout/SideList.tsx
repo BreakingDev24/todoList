@@ -22,8 +22,9 @@ export default function SideList({ className }: { className?: string }) {
       <Button
         className="self-end md:hidden"
         onClick={() => dispatch(closeList())}
+        aria-label="close sidelist"
       >
-        <ChevronLeft></ChevronLeft>
+        <ChevronLeft aria-hidden="true" focusable="false"></ChevronLeft>
       </Button>
       <ListsPanel />
     </aside>
