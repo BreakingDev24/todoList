@@ -1,5 +1,5 @@
 import { Trash2 } from "lucide-react";
-import Button from "./Button";
+import Button from "../ui/Button";
 import clsx from "clsx";
 
 interface ListItemProps {
@@ -9,7 +9,7 @@ interface ListItemProps {
   onDelete?: () => void;
 }
 
-export default function ListItem({
+export function ListItem({
   title,
   isActive,
   onClick,

@@ -1,13 +1,13 @@
-import { setCurrentList, removeList } from "../features/todoSlice.ts";
-import { useAppDispatch, useAppSelector } from "../store/hooks.ts";
-import cn from "../utils/cn";
-import ListItem from "./ui/ListItem";
+import { setCurrentList, removeList } from "../../features/todoSlice.ts";
+import { useAppDispatch, useAppSelector } from "../../store/hooks.ts";
+import cn from "../../utils/cn.ts";
+import { ListItem } from "./ListItem.tsx";
 
 interface ListProps {
   className?: string;
 }
 
-export default function List({ className }: ListProps) {
+export function Lists({ className }: ListProps) {
   const lists = useAppSelector((state) => state.todo.list);
   const selectedList = useAppSelector((state) => state.todo.currentItem);
   const dispatch = useAppDispatch();
