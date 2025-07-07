@@ -23,7 +23,7 @@ A simple and efficient Todo List application to help you organize your daily tas
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/todoList.git
+git clone https://github.com/BreakingDev24/todoList.git
 cd todoList
 npm install
 ```
