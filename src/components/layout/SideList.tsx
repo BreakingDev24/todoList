@@ -1,18 +1,15 @@
 import { ChevronLeft } from "lucide-react";
 import Button from "../ui/Button";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { addList } from "../../features/todoSlice";
-import Lists from "../Lists";
 import { closeList, selectIsListOpen } from "../../features/openSideList";
 import cn from "../../utils/cn";
-import AddItemForm from "../AddItemForm";
+
+import ListsPanel from "../lists";
 
 export default function SideList({ className }: { className?: string }) {
   const isListOpen = useAppSelector(selectIsListOpen);
   const dispatch = useAppDispatch();
-  const handleAddList = (text: string) => {
-    dispatch(addList(text));
-  };
+
   return (
     <aside
       className={cn(
@@ -28,17 +25,7 @@ export default function SideList({ className }: { className?: string }) {
       >
         <ChevronLeft></ChevronLeft>
       </Button>
-      <div className="flex min-h-0 flex-1 flex-col gap-7 p-4 pb-3">
-        <AddItemForm
-          name="input list"
-          placeholder="add new list"
-          buttonText="Add"
-          onSubmit={handleAddList}
-        />
-        <div className="custom-scrollbar flex-1 overflow-y-auto">
-          <Lists />
-        </div>
-      </div>
+      <ListsPanel />
     </aside>
   );
 }
